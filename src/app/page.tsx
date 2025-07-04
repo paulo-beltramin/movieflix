@@ -13,14 +13,14 @@ export default function Home() {
 
         <section>
           <h1 className="text-white text-4xl lg:text-6xl lg:text-left text-center mt-12 mb-8 font-bold">Filmes</h1>
-          <article className="w-[960px] lg:w-full mx-auto">
+          <article >
             <SlideMovies />
           </article>
         </section>
 
         <section>
           <h1 className="text-white text-4xl lg:text-6xl lg:text-left text-center mt-20 mb-8 font-bold">Series</h1>
-          <article className="w-[960px] lg:w-11/12 mx-auto">
+          <article >
             <SlideSeries />
           </article>
         </section>
