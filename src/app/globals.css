@@ -1,0 +1,10 @@
+
+@import "tailwindcss";
+@import 'swiper/css';
+
+
+
+
+body{
+    background-color: black;
+}
