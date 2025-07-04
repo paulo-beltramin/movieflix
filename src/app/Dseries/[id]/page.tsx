@@ -1,7 +1,7 @@
 import { FaRegStar } from "react-icons/fa";
 import { API_KEY, BASE_URL } from "@/api";
 import Container from "@/components/container";
-import { MovieProps } from "@/components/interfaces";
+import {  DetailSeries} from "@/components/interfaces";
 
 
 
@@ -18,9 +18,10 @@ async function DetailsSeries(id: number) {
 
 
 
-export default async function Dseries({ params }: { params: { id:number } }) {
-
-    const data: MovieProps = await DetailsSeries(params.id)
+export default async function Dseries({ params }: { params: Promise<{ id: number }> }) {
+  
+    const {id} = await params
+    const data: DetailSeries = await DetailsSeries(id)
 
     return (
         <>
@@ -37,7 +38,7 @@ export default async function Dseries({ params }: { params: { id:number } }) {
                     </p>
                     </div>
                     <p className="text-3xl font-bold underline lg:text-4xl  text-white mt-10 text-center">
-                        {data.title}
+                        {data.name}
 
                     </p>
 

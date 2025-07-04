@@ -1,6 +1,6 @@
 import { API_KEY, BASE_URL } from "@/api";
 import Container from "@/components/container";
-import { MovieProps } from "@/components/interfaces";
+import { DetailsMovies } from "@/components/interfaces";
 import { FaRegStar } from "react-icons/fa";
 
 
@@ -18,23 +18,23 @@ async function DetailsMovie(id: number) {
 
 
 
-export default async function Details({ params }: { params: { id: number } }) {
-
-    const data: MovieProps = await DetailsMovie(params.id)
+export default async function Details({ params }: { params: Promise<{ id: number }> }) {
+    const { id } = await params
+    const data: DetailsMovies = await DetailsMovie(id)
 
     return (
         <>
             <Container>
                 <section className="mt-10 ">
                     <div className="bg-black">
-                        <img className="w-full opacity-40 rounded-lg h-56 object-cover" src={`https://image.tmdb.org/t/p/original${data.backdrop_path}`} alt={''} />
-                            <p className="text-yellow-400 mt-2 flex items-center gap-2">
-                          <FaRegStar size={28} />
-                         <p className="text-white mt-2 text-lg">
-                             {data.vote_average.toFixed(1)}
-                         </p>
+                        <img className="w-full opacity-40 rounded-lg h-56 object-cover" src={`https://image.tmdb.org/t/p/original${data.backdrop_path}`} alt={data.title} />
+                        <p className="text-yellow-400 mt-2 flex items-center gap-2">
+                            <FaRegStar size={28} />
+                            <p className="text-white mt-2 text-lg">
+                                {data.vote_average.toFixed(1)}
+                            </p>
 
-                    </p>
+                        </p>
                     </div>
                     <p className="text-3xl font-bold underline lg:text-4xl  text-white mt-10 text-center">
                         {data.title}
@@ -51,7 +51,7 @@ export default async function Details({ params }: { params: { id: number } }) {
                         </span>
                     </p>
 
-                  
+
 
                     <button className="bg-red-600 font-bold w-full
                     text-white py-2  mb-20 cursor-pointer">Assistir</button>
