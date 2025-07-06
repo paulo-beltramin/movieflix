@@ -32,7 +32,7 @@ export function SlideMovies() {
                 {movies.map((item) => (
                     <SwiperSlide>
                         <Link href={`/details/${item.id}`}>
-                            <img src={`https://image.tmdb.org/t/p/original${item.poster_path}`} alt={item.title} />
+                            <img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt={item.title} />
                         </Link>
                     </SwiperSlide>
                 ))}

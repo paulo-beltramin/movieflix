@@ -1,7 +1,8 @@
 import { FaRegStar } from "react-icons/fa";
 import { API_KEY, BASE_URL } from "@/api";
 import Container from "@/components/container";
-import {  DetailSeries} from "@/components/interfaces";
+import { DetailSeries } from "@/components/interfaces";
+import Link from "next/link";
 
 
 
@@ -19,8 +20,8 @@ async function DetailsSeries(id: number) {
 
 
 export default async function Dseries({ params }: { params: Promise<{ id: number }> }) {
-  
-    const {id} = await params
+
+    const { id } = await params
     const data: DetailSeries = await DetailsSeries(id)
 
     return (
@@ -29,13 +30,13 @@ export default async function Dseries({ params }: { params: Promise<{ id: number
                 <section className="mt-10 ">
                     <div className="bg-black">
                         <img className="w-full opacity-40 rounded-lg h-56 object-cover" src={`https://image.tmdb.org/t/p/original${data.backdrop_path}`} alt={''} />
-                            <p className="text-yellow-400 mt-2 flex items-center gap-2">
-                          <FaRegStar size={28} />
-                         <p className="text-white mt-2 text-lg">
-                              {data.vote_average.toFixed(1)} 
-                         </p>
+                        <p className="text-yellow-400 mt-2 flex items-center gap-2">
+                            <FaRegStar size={28} />
+                            <p className="text-white mt-2 text-lg">
+                                {data.vote_average.toFixed(1)}
+                            </p>
 
-                    </p>
+                        </p>
                     </div>
                     <p className="text-3xl font-bold underline lg:text-4xl  text-white mt-10 text-center">
                         {data.name}
@@ -46,9 +47,13 @@ export default async function Dseries({ params }: { params: Promise<{ id: number
                         {data.overview}
                     </p>
 
-                
-                    <button className=" mt-8 bg-red-600 font-bold w-full
-                    text-white py-2  mb-20 cursor-pointer">Assistir</button>
+
+                    <Link href={'https://www.themoviedb.org/'} target="_blank" className="bg-red-600 font-bold
+                    text-white py-2 ">
+                        <button className="w-full cursor-pointer my-20">
+                            Assistir
+                        </button>
+                    </Link>
                 </section>
             </Container>
         </>

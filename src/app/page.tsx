@@ -1,5 +1,6 @@
 
 import Container from "@/components/container"
+import Footer from "@/components/footer";
 import { SlideMovies } from "@/components/slideMovies";
 import { SlideSeries } from "@/components/SlideSeries";
 
@@ -25,6 +26,9 @@ export default function Home() {
           </article>
         </section>
 
+        <section>
+          <Footer/>
+        </section>
       </main>
     </Container >
   );

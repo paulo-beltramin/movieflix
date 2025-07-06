@@ -1,6 +1,7 @@
 import { API_KEY, BASE_URL } from "@/api";
 import Container from "@/components/container";
 import { DetailsMovies } from "@/components/interfaces";
+import Link from "next/link";
 import { FaRegStar } from "react-icons/fa";
 
 
@@ -53,8 +54,12 @@ export default async function Details({ params }: { params: Promise<{ id: number
 
 
 
-                    <button className="bg-red-600 font-bold w-full
-                    text-white py-2  mb-20 cursor-pointer">Assistir</button>
+                    <Link href={'https://www.themoviedb.org/'} target="_blank" className="bg-red-600 font-bold
+                    text-white py-2 ">
+                        <button className="w-full cursor-pointer mb-20">
+                            Assistir
+                        </button>
+                    </Link>
                 </section>
             </Container>
         </>
