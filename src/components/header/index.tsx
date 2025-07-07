@@ -1,16 +1,30 @@
-
-import logoHeader from '@/assets/capa-netflix.jpg'
+"use client"
 import Link from 'next/link'
+import logoHeader from '@/assets/capa-netflix.jpg'
+import { signIn, signOut, useSession } from 'next-auth/react'
 
-const Header = () => {
+
+export default function Header() {
+
+  const { data: session } = useSession()
+
+
+  const handleLogin = () => {
+    return signIn()
+  }
+
+  const handleLogOut = () => {
+    return signOut()
+  }
+
   return (
-    <div>
+    <>
 
-      <div className='bg-black'>
+      <section className='bg-black'>
         <img src={logoHeader.src} alt="logo do header" className='opacity-30 relative w-full' />
-      </div>
+      </section>
 
-      <div className='absolute text-white top-0  lg:flex flex-col justify-center items-center h-screen w-full hidden '>
+      <section className='absolute text-white top-0  lg:flex flex-col justify-center items-center h-screen w-full hidden '>
         <h1 className='text-6xl font-black mb-2 w-6/12 text-center leading-20 '>
           Filmes, séries e muito mais, sem limites
         </h1>
@@ -21,10 +35,10 @@ const Header = () => {
         <p >
           Quer assistir? Informe seu email para criar ou reiniciar sua assinatura.
         </p>
-      </div>
+      </section>
 
       <header className="bg-transparent   ">
-        <div className="flex flex-col justify-center lg:flex-row lg:justify-between items-center w-11/12 
+        <section className="flex flex-col justify-center lg:flex-row lg:justify-between items-center w-11/12 
        absolute top-6  sm:top-6 sm:left-12">
           <Link href={'/'} className="text-4xl sm:text-6xl mb-10  font-black text-red-600">MovieFlix</Link>
 
@@ -36,18 +50,23 @@ const Header = () => {
             </select>
 
             <div >
-              <button type='submit' className="bg-red-600 text-white font-bold cursor-pointer
-              rounded-lg  w-24 lg:w-48 py-4 lg:text-2xl">
-                Entrar
-              </button>
+              {!session?.user ? (
+                <button className="bg-red-600 text-white font-bold cursor-pointer
+              rounded-lg  w-24 lg:w-48 py-4 lg:text-2xl" onClick={handleLogin}>
+                  Entrar
+                </button>
+              ) : (
+                <button className="bg-red-600 text-white font-bold cursor-pointer
+              rounded-lg  w-24 lg:w-48 py-4 lg:text-2xl" onClick={handleLogOut}>
+                  Sair
+                </button>
+              )}
             </div>
           </div>
-        </div>
+        </section>
       </header>
 
-
-    </div>
+    </>
   )
 }
 
-export default Header

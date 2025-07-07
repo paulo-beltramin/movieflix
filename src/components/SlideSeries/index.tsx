@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Link from "next/link"
 
-import { SeriesProps } from '../interfaces'
-import { API_KEY, BASE_URL } from '@/api'
+import { api } from '@/api'
 
 import 'swiper/css'
+import { SeriesProps } from '../interfaces'
 
 export function SlideSeries() {
     const [movies, setMovies] = useState<SeriesProps[]>([])
@@ -14,15 +14,12 @@ export function SlideSeries() {
     useEffect(() => {
         const getMovies = async () => {
 
-            await fetch(`${BASE_URL}/discover/tv?${API_KEY}`)
+            await api.get(`/discover/tv`)
                 .then((res) => {
-                    return res.json()
+                    return setMovies(res.data.results)
                 })
 
-                .then((data) => {
 
-                    return setMovies(data.results)
-                })
         }
         getMovies()
     }, [])
@@ -33,7 +30,7 @@ export function SlideSeries() {
                 {movies.map((item) => (
                     <SwiperSlide>
                         <Link href={`/Dseries/${item.id}`}>
-                            <img  src={`https://image.tmdb.org/t/p/original${item.poster_path}`} alt={item.name} />
+                            <img src={`https://image.tmdb.org/t/p/original${item.poster_path}`} alt={item.name} />
                         </Link>
                     </SwiperSlide>
                 ))}

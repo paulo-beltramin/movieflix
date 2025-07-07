@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import Link from "next/link"
 
 import { MovieProps } from '../interfaces'
-import { API_KEY, BASE_URL } from '@/api'
+import { api } from '@/api'
 
 
 export function SlideMovies() {
@@ -13,14 +13,14 @@ export function SlideMovies() {
     useEffect(() => {
         const getMovies = async () => {
 
-            await fetch(`${BASE_URL}/discover/movie?${API_KEY}`)
+            await api.get(`/discover/movie`)
                 .then((res) => {
-                    return res.json()
+                    return res
                 })
 
-                .then((data) => {
+                .then((res) => {
 
-                    return setMovies(data.results)
+                    return setMovies(res.data.results)
                 })
         }
         getMovies()
@@ -28,7 +28,7 @@ export function SlideMovies() {
 
     return (
         <>
-            <Swiper  slidesPerView={5} spaceBetween={16}>
+            <Swiper slidesPerView={5} spaceBetween={16}>
                 {movies.map((item) => (
                     <SwiperSlide>
                         <Link href={`/details/${item.id}`}>
@@ -39,9 +39,6 @@ export function SlideMovies() {
 
             </Swiper>
         </>
-
-
-
 
 
     )
