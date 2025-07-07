@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import Link from "next/link"
 
 import { MovieProps } from '../interfaces'
-import { api } from '@/api'
+import { api } from '@/axios'
 
 
 export function SlideMovies() {

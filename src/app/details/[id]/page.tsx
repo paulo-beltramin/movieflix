@@ -1,4 +1,4 @@
-import { api, } from "@/api";
+import { api, } from "@/axios";
 import Container from "@/components/container";
 import Link from "next/link";
 import { FaRegStar } from "react-icons/fa";

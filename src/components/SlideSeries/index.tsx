@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Link from "next/link"
 
-import { api } from '@/api'
+import { api } from '@/axios'
 
 import 'swiper/css'
 import { SeriesProps } from '../interfaces'
