@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Link from "next/link"
 
-import { api } from '@/axios'
+import { api } from '@/components/axios'
 
 import 'swiper/css'
 import { SeriesProps } from '../interfaces'
@@ -29,7 +29,7 @@ export function SlideSeries() {
             <Swiper slidesPerView={4} spaceBetween={16}>
                 {movies.map((item) => (
                     <SwiperSlide>
-                        <Link href={`/Dseries/${item.id}`}>
+                        <Link href={`/movies/Dseries/${item.id}`}>
                             <img src={`https://image.tmdb.org/t/p/original${item.poster_path}`} alt={item.name} />
                         </Link>
                     </SwiperSlide>

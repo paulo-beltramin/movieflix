@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import Link from "next/link"
 
 import { MovieProps } from '../interfaces'
-import { api } from '@/axios'
+import { api } from '@/components/axios'
 
 
 export function SlideMovies() {
@@ -31,7 +31,7 @@ export function SlideMovies() {
             <Swiper slidesPerView={5} spaceBetween={16}>
                 {movies.map((item) => (
                     <SwiperSlide>
-                        <Link href={`/details/${item.id}`}>
+                        <Link href={`/movies/details/${item.id}`}>
                             <img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt={item.title} />
                         </Link>
                     </SwiperSlide>

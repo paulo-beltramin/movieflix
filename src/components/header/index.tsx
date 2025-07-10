@@ -1,21 +1,11 @@
 "use client"
 import Link from 'next/link'
-import logoHeader from '@/assets/capa-netflix.jpg'
-import { signIn, signOut, useSession } from 'next-auth/react'
 
+import logoHeader from '@/assets/capa-netflix.jpg'
 
 export default function Header() {
 
-  const { data: session } = useSession()
 
-
-  const handleLogin = () => {
-    return signIn()
-  }
-
-  const handleLogOut = () => {
-    return signOut()
-  }
 
   return (
     <>
@@ -40,7 +30,7 @@ export default function Header() {
       <header className="bg-transparent   ">
         <section className="flex flex-col justify-center lg:flex-row lg:justify-between items-center w-11/12 
        absolute top-6  sm:top-6 sm:left-12">
-          <Link href={'/'} className="text-4xl sm:text-6xl mb-10  font-black text-red-600">MovieFlix</Link>
+          <Link href={'/movies'} className="text-4xl sm:text-6xl mb-10  font-black text-red-600">MovieFlix</Link>
 
           <div className="flex gap-4 ">
             <select className="bg-trasparent text-white font-bold py-2 w-32 sm:w-48 lg:text-2xl text-center outline-none border border-gray-400
@@ -50,17 +40,17 @@ export default function Header() {
             </select>
 
             <div >
-              {!session?.user ? (
-                <button className="bg-red-600 text-white font-bold cursor-pointer
-              rounded-lg  w-24 lg:w-48 py-4 lg:text-2xl" onClick={handleLogin}>
-                  Entrar
-                </button>
-              ) : (
-                <button className="bg-red-600 text-white font-bold cursor-pointer
-              rounded-lg  w-24 lg:w-48 py-4 lg:text-2xl" onClick={handleLogOut}>
+
+              <button className="bg-red-600 text-white font-bold cursor-pointer
+              rounded-lg  w-24 lg:w-48 py-4 lg:text-2xl">
+                Entrar
+              </button>
+
+              {/* <button className="bg-red-600 text-white font-bold cursor-pointer
+              rounded-lg  w-24 lg:w-48 py-4 lg:text-2xl" >
                   Sair
-                </button>
-              )}
+                </button> */}
+
             </div>
           </div>
         </section>

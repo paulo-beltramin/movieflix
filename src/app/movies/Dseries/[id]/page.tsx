@@ -1,5 +1,5 @@
 import { FaRegStar } from "react-icons/fa";
-import { api} from "@/axios";
+import { api} from "@/components/axios";
 import Container from "@/components/container";
 import Link from "next/link";
 
